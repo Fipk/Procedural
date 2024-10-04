@@ -355,6 +355,7 @@
 "Assets/Scripts/Display.cs"
 "Assets/Scripts/MapGenerator.cs"
 "Assets/Scripts/PerlinNoise.cs"
+"Assets/Scripts/TextureGenerator.cs"
 -langversion:9.0
 
 /deterministic
