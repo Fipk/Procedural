@@ -17,6 +17,8 @@ public class MapGenerator : MonoBehaviour
 
     public bool autoUpdate;
 
+    public float meshHeightValue;
+
     public int seed;
     public TerrainType[] region;
 
@@ -51,7 +53,7 @@ public class MapGenerator : MonoBehaviour
             display.DrawNoiseMap(TextureGenerator.TextureFromColourMap(colourMap,mapWidth,mapHeight));
         } else if (drawMode == DrawMode.Mesh)
         {
-            display.DrawMesh(MeshGenerator.GenerateTerrainMesh(noiseMap), TextureGenerator.TextureFromColourMap(colourMap, mapWidth, mapHeight));
+            display.DrawMesh(MeshGenerator.GenerateTerrainMesh(noiseMap, meshHeightValue), TextureGenerator.TextureFromColourMap(colourMap, mapWidth, mapHeight));
         }
 
     }
