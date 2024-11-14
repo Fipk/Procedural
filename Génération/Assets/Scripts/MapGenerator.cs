@@ -48,6 +48,7 @@ public class MapGenerator : MonoBehaviour
         }
         Display display = FindObjectOfType<Display>();
 
+        
         if (drawMode == DrawMode.NoiseMap)
         {
             display.DrawNoiseMap(TextureGenerator.TextureFromHeightMap(noiseMap));
@@ -56,8 +57,16 @@ public class MapGenerator : MonoBehaviour
             display.DrawNoiseMap(TextureGenerator.TextureFromColourMap(colourMap, chunkSize, chunkSize));
         } else if (drawMode == DrawMode.Mesh)
         {
-            display.DrawMesh(MeshGenerator.GenerateTerrainMesh(noiseMap, meshHeightValue, meshHeightCurve, levelOfDetail), TextureGenerator.TextureFromColourMap(colourMap, chunkSize, chunkSize));
+            MeshData meshData = MeshGenerator.GenerateTerrainMesh(noiseMap, meshHeightValue, meshHeightCurve, levelOfDetail);
+            display.DrawMesh(meshData, TextureGenerator.TextureFromColourMap(colourMap, chunkSize, chunkSize));
+            ItemSpawner itemSpawner = FindObjectOfType<ItemSpawner>();
+            if (itemSpawner != null)
+            {
+                itemSpawner.SpawnItems(noiseMap,meshData);
+            }
         }
+        
+        
 
     }
 }

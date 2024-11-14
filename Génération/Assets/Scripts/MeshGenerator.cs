@@ -41,6 +41,7 @@ public static class MeshGenerator
                 vertexIndex++;
             }
         }
+        
         return meshData;
     }
 }
